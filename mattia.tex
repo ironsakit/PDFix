@@ -13,53 +13,65 @@
 \newtcolorbox{ex}[1]{ colback=orange!8, colframe=orange!80!black, fonttitle=\bfseries, title=#1 }
 
 \begin{document}
-\begin{defn}{Macchina Virtuale}
-Una macchina virtuale Mi è un computer 'ipotetico' programmabile attraverso un linguaggio Li. Ad ogni linguaggio Li corrisponde una macchina virtuale Mi e viceversa: Li è l’insieme delle istruzioni che Mi è in grado di comprendere ed eseguire. Ogni linguaggio Li offre 'astrazioni' che nascondono i dettagli realizzativi basati sugli strati sottostanti.
+Circa 50 anni fa, durante un famoso seminario al Dartmouth College, venne ufficialmente introdotto il termine “Intelligenza Artificiale”. Vi era allora un’atmosfera di euforia tecnologica indotta dall’avvento del computer, una macchina in grado di manipolare simboli, e l’intelligenza artificiale sembrava a portata di mano. Che cosa è successo dopo? L’articolo presenta alcuni momenti particolarmente significativi della storia dell’IA, le principali aree di ricerca e le prospettive applicative.
+
+
+\begin{defn}{Intelligenza Artificiale}
+L’Intelligenza Artificiale (IA) è un campo di ricerca che mira a creare macchine in grado di eseguire compiti che richiedono intelligenza umana, come apprendere, ragionare, risolvere problemi e comprendere il linguaggio naturale.
 \end{defn}
 
 
-\begin{defn}{Semantic Gap}
-Il Semantic Gap (Divario Semantico) rappresenta la distanza tra le istruzioni base cablate nell'hardware e le necessità di chi programma applicazioni complesse con linguaggi ad alto livello.
-\end{defn}
+Ogni disciplina scientifica è animata da sogni e motivata da grandi progetti. Grazie ad essi si procede, conseguendo risultati forse differenti rispetto a quelli immaginati, ma spesso utili e in grado di conferire all’intero programma un significato che sovente va al di là delle speranze e degli obiettivi originali. Accade anche di conseguire, talora, risultati inaspettati e originariamente imprevedibili.
 
 
-L'approccio strutturale dei moderni sistemi di elaborazione si basa sull'idea di strati di astrazione. Questi strati permettono di gestire complessità hardware e software in modo organizzato. Il concetto di macchina virtuale è centrale in questo approccio, poiché permette di programmare in linguaggi ad alto livello senza dover gestire i dettagli hardware.
-
-
-I livelli convenzionali dei sistemi di calcolo sono sei: L0 (Logica Digitale), L1 (Microarchitettura), L2 (Linguaggio Macchina / ISA), L3 (Sistema Operativo), L4 (Linguaggio Assemblativo), L5 (Livello Applicativo). Ogni livello offre astrazioni per semplificare la programmazione.
-
-
-\begin{verbatim}
-#include <stdio.h>
-
-int main()
-{
-    printf("Hello World");
-
-    return 0;
-}
-\end{verbatim}
+Qual è il sogno dei ricercatori di intelligenza artificiale? Nella maggior parte dei casi si sogna, cosa piuttosto ambiziosa in verità, di realizzare quello che di certo appare come il più inaccessibile tra i progetti scientifici: capire i principi e i meccanismi del funzionamento della mente umana allo scopo di riprodurre l’intelligenza umana su una macchina.
 
 
 \begin{trap}{Errori da evitare}
-Una trappola comune è pensare che l'interprete esegua direttamente le istruzioni del linguaggio superiore, senza richiedere la traduzione in istruzioni del livello inferiore.
+L’espressione “Intelligenza Artificiale” ha innescato paure irrazionali, alimentate da certa letteratura e cinematografia fantascientifica. Inoltre, il sarcasmo proveniente da alcuni ambienti antiscientifici non ha giovato. Forse il campo avrebbe incontrato meno ostilità se per esso fosse stata scelta la denominazione britannica – derivata da A. Turing – di “Intelligenza delle Macchine” (IM), in quanto essa rammenta costantemente che, per quanto intelligenti, pur sempre di macchine si tratta.
+\end{trap}
+
+
+La scelta di un’espressione tanto forte come “Intelligenza Artificiale” ha di certo generato aspettative eccessive, in particolare considerando le limitazioni della tecnologia con la quale gli artefatti intelligenti andavano via via realizzati. D’altra parte, qualcuno ha giustamente osservato che ogni volta che l’IA raggiunge un nuovo traguardo questo non è più annoverato tra i suoi risultati ma si trasforma in un prodotto dell’informatica tradizionale.
+
+
+\begin{ex}{Esempio}
+Un esempio abbastanza noto è costituito dai sintetizzatori vocali con cui si interagisce telefonicamente quando si chiama un call center, per esempio, se si deve segnalare i valori del contatore alla società fornitrice di elettricità. Oggi si considerano tali sintetizzatori come un utile prodotto dell’informatica. In passato, tuttavia, quello dei sintetizzatori vocali e, più in generale, della elaborazione del segnale vocale, era un problema di interazione uomo-macchina a ragione collocato nella ricerca in IA.
+\end{ex}
+
+
+Il programma di fondo dell’IA, quello di costruire macchine in grado di comportarsi come gli esseri umani, non è mai stato abbandonato e il test di Turing, basato sull’idea secondo cui se il comportamento di una macchina è indistinguibile da quello di un essere umano allora quella macchina può essere considerata intelligente, viene oggi quotidianamente superato in molte circostanze, almeno in determinati e ben precisi ambiti cognitivi.
+
+
+\begin{ex}{Esempio}
+A semplificare (o complicare?) le cose oggi interviene Internet. Le informazioni, grazie a Internet, si trasferiscono da un capo all’altro del pianeta in tempo reale: quando si interagisce con uno sconosciuto giocando a scacchi in rete, non si è in grado di stabilire se l’interlocutore sia un programma software o un essere umano. Così il test di Turing, nel particolare ambito cognitivo costituito dal gioco degli scacchi, appare perfettamente superato.
+\end{ex}
+
+
+\begin{ex}{Esempio}
+In effetti, rete o no, per quanto riguarda il gioco degli scacchi ci sono programmi che riescono oggi a battere i campioni del mondo. Nel 1997, Deep Blue, un sistema sviluppato dalla IBM, riuscì a sconfiggere l’allora campione del mondo di scacchi, G. Kasparov, in un torneo regolare di sei incontri. Si trattò di un successo clamoroso dell’IA.
+\end{ex}
+
+
+\begin{trap}{Errori da evitare}
+Nella situazione specifica, la supremazia dei calcolatori riguarda una data capacità cognitiva: gli scacchi. Ma è chiaro che un computer esperto in quel gioco incontrerebbe difficoltà insormontabili se si pretendesse che si cimentasse in un compito per noi assai semplice come quello di friggere un uovo. O se si tentasse di sostenere con lui un’amabile conversazione.
 \end{trap}
 
 
 \begin{ex}{Esempio}
-Un esempio di astrazione è il linguaggio C, che permette di scrivere programmi senza dover gestire le istruzioni macchina. Il compilatore traduce queste istruzioni in codice eseguibile direttamente dal processore.
+Per limitarsi alle conversazioni con i computer condotte in linguaggio naturale, le difficoltà sono effettivamente notevoli. Si può ricordare in proposito un famoso programma degli anni Sessanta, ELIZA (scritto nel 1965 da J. Weizenbaum), che simulava una seduta dallo psicanalista. Ecco un tipico dialogo tra il programma e una ragazza:
 \end{ex}
 
 
-Per colmare il divario semantico, si utilizzano due tecniche principali: la traduzione e l'interpretazione. La traduzione produce un programma equivalente in linguaggio macchina, mentre l'interpretazione esegue le istruzioni in tempo reale tramite un ciclo fetch-decode-execute.
+\begin{ex}{Esempio}
+UTENTE: Gli uomini sono tutti uguali. ELIZA: In che senso? UTENTE: Ci rompono sempre le scatole per una cosa o per l’altra. ELIZA: Ti viene in mente un esempio specifico? UTENTE: Il mio ragazzo mi ha fatto venire qui. ELIZA: Il tuo ragazzo ti ha fatto venire qui? UTENTE: Dice che sono sempre depressa. ELIZA: Mi spiace che tu sia depressa. E così via, senza fine.
+\end{ex}
 
 
-La macchina virtuale M1, con linguaggio L1, è un esempio di come si possa creare un livello di astrazione. Le istruzioni di L1 sono definite in termini di istruzioni di L0, permettendo di semplificare la programmazione senza dover gestire i dettagli hardware.
+La strategia utilizzata da ELIZA per rispondere all’utente è talmente ingenua da non richiedere ulteriori commenti: anche se, va precisato a onor del vero, molti di noi sono inclini a sospettare che talora gli psicanalisti veri si comportino allo stesso modo. A parte gli scherzi, abbiamo certo sorriso con condiscendenza a fronte di dialoghi come questo tra un computer e un utente umano. Ma dalla metà degli anni Sessanta ad oggi molto lavoro è stato fatto e si sono conseguiti risultati assai più interessanti di questo.
 
 
-\begin{trap}{Errori da evitare}
-Un errore comune è credere che la macchina virtuale sia un'entità fisica, mentre in realtà è un modello astratto che permette di programmare in linguaggi di alto livello.
-\end{trap}
+ELIZA riveste, ormai, un interesse puramente storico, perché oggi l’elaborazione del linguaggio naturale scritto e parlato è diventata un’area matura e con molteplici applicazioni.
 
 \end{document}
 

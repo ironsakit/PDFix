@@ -116,12 +116,3 @@ def costruisci_blocco(blocchi):
         else:
             pezzi.append(template_riserva(blocco))
     return "\n\n".join(pezzi)
-
-appunto = """"""
-
-risposta = ask_qwen(appunto)
-blocchi = parsa_risposta(risposta)
-documento = costruisci_documento(costruisci_blocco(blocchi))
-with open("mattia.tex", "w", encoding="utf-8") as f:
-    f.write(documento)
-compila_pdf("mattia.tex")
