@@ -1,0 +1,8 @@
+.idea/
+.venv/
+
+*.pdf
+*.aux
+*.log
+*.xopp
+!appunti.pdf

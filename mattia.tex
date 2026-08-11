@@ -1,0 +1,66 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper, margin=1.5cm]{geometry}  % foglio A4, margini di 2 cm su ogni lato
+\usepackage{parskip}          % niente rientro e spazio tra paragrafi
+\usepackage{tcolorbox}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+\setmathfont{latinmodern-math.otf}
+\tcbuselibrary{skins, breakable}
+
+
+\newtcolorbox{defn}[1]{ colback=green!5, colframe=green!50!black, fonttitle=\bfseries, title=#1 }
+\newtcolorbox{trap}[1]{ colback=red!8, colframe=red!80!black, fonttitle=\bfseries, title=#1 }
+\newtcolorbox{ex}[1]{ colback=orange!8, colframe=orange!80!black, fonttitle=\bfseries, title=#1 }
+
+\begin{document}
+\begin{defn}{Macchina Virtuale}
+Una macchina virtuale Mi è un computer 'ipotetico' programmabile attraverso un linguaggio Li. Ad ogni linguaggio Li corrisponde una macchina virtuale Mi e viceversa: Li è l’insieme delle istruzioni che Mi è in grado di comprendere ed eseguire. Ogni linguaggio Li offre 'astrazioni' che nascondono i dettagli realizzativi basati sugli strati sottostanti.
+\end{defn}
+
+
+\begin{defn}{Semantic Gap}
+Il Semantic Gap (Divario Semantico) rappresenta la distanza tra le istruzioni base cablate nell'hardware e le necessità di chi programma applicazioni complesse con linguaggi ad alto livello.
+\end{defn}
+
+
+L'approccio strutturale dei moderni sistemi di elaborazione si basa sull'idea di strati di astrazione. Questi strati permettono di gestire complessità hardware e software in modo organizzato. Il concetto di macchina virtuale è centrale in questo approccio, poiché permette di programmare in linguaggi ad alto livello senza dover gestire i dettagli hardware.
+
+
+I livelli convenzionali dei sistemi di calcolo sono sei: L0 (Logica Digitale), L1 (Microarchitettura), L2 (Linguaggio Macchina / ISA), L3 (Sistema Operativo), L4 (Linguaggio Assemblativo), L5 (Livello Applicativo). Ogni livello offre astrazioni per semplificare la programmazione.
+
+
+\begin{verbatim}
+#include <stdio.h>
+
+int main()
+{
+    printf("Hello World");
+
+    return 0;
+}
+\end{verbatim}
+
+
+\begin{trap}{Errori da evitare}
+Una trappola comune è pensare che l'interprete esegua direttamente le istruzioni del linguaggio superiore, senza richiedere la traduzione in istruzioni del livello inferiore.
+\end{trap}
+
+
+\begin{ex}{Esempio}
+Un esempio di astrazione è il linguaggio C, che permette di scrivere programmi senza dover gestire le istruzioni macchina. Il compilatore traduce queste istruzioni in codice eseguibile direttamente dal processore.
+\end{ex}
+
+
+Per colmare il divario semantico, si utilizzano due tecniche principali: la traduzione e l'interpretazione. La traduzione produce un programma equivalente in linguaggio macchina, mentre l'interpretazione esegue le istruzioni in tempo reale tramite un ciclo fetch-decode-execute.
+
+
+La macchina virtuale M1, con linguaggio L1, è un esempio di come si possa creare un livello di astrazione. Le istruzioni di L1 sono definite in termini di istruzioni di L0, permettendo di semplificare la programmazione senza dover gestire i dettagli hardware.
+
+
+\begin{trap}{Errori da evitare}
+Un errore comune è credere che la macchina virtuale sia un'entità fisica, mentre in realtà è un modello astratto che permette di programmare in linguaggi di alto livello.
+\end{trap}
+
+\end{document}
+
+
