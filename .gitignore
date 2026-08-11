@@ -6,3 +6,4 @@
 *.log
 *.xopp
 !appunti.pdf
+__pycache__/
