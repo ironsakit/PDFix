@@ -2,7 +2,7 @@
 
 Trasforma appunti disordinati e imprecisi in PDF ben organizzati, usando il modello Ollama [qwen3:8b](https://ollama.com/library/qwen3:8b) come "cervello" e il codice Python come le "mani" che eseguono il lavoro: l'LLM decide *cosa* dire, il codice controlla *come* viene impaginato.
 
-![Esempio di PDF](assets/esempio.png)
+![Esempio di PDF](assets/EsempioPDF.png)
 
 ## Come funziona
 
