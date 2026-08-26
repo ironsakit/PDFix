@@ -1,78 +1,602 @@
 \documentclass[12pt]{article}
-\usepackage[a4paper, margin=1.5cm]{geometry}  % foglio A4, margini di 2 cm su ogni lato
-\usepackage{parskip}          % niente rientro e spazio tra paragrafi
-\usepackage{tcolorbox}
+
+\usepackage[a4paper, margin=1.5cm]{geometry}
+\usepackage{parskip}
+
 \usepackage{fontspec}
 \usepackage{unicode-math}
-\setmathfont{latinmodern-math.otf}
-\tcbuselibrary{skins, breakable}
+\setmathfont{Latin Modern Math}
 
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
 
-\newtcolorbox{defn}[1]{ colback=green!5, colframe=green!50!black, fonttitle=\bfseries, title=#1 }
-\newtcolorbox{trap}[1]{ colback=red!8, colframe=red!80!black, fonttitle=\bfseries, title=#1 }
-\newtcolorbox{ex}[1]{ colback=orange!8, colframe=orange!80!black, fonttitle=\bfseries, title=#1 }
+% =========================
+% TITOLI
+% =========================
+
+\definecolor{main}{RGB}{35,105,65}
+
+\titleformat{name=\section,numberless}
+    {\Large\bfseries\color{main}}
+    {}
+    {0pt}
+    {}
+    [\vspace{4pt}{\color{main!35}\titlerule[0.8pt]}]
+
+\titlespacing{name=\section,numberless}
+    {0pt}
+    {22pt}
+    {10pt}
+
+% =========================
+% PAGINA
+% =========================
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyfoot[C]{%
+    \small\textcolor{green!50!black}{\thepage}%
+}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyfoot[C]{%
+        \small\textcolor{green!50!black}{\thepage}%
+    }
+    \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
+
+% =========================
+% DEFINIZIONE
+% =========================
+
+\newtcolorbox{defn}[1]{
+    colback=green!15,
+    colframe=green!55!black,
+    coltitle=green!25!black,
+    colbacktitle=green!30,
+    fonttitle=\bfseries,
+    title={DEFINIZIONE\quad\textemdash\quad #1},
+    boxrule=0.6pt,
+    arc=2pt,
+    left=7pt,
+    right=7pt,
+    top=4pt,
+    bottom=4pt,
+    breakable
+}
+
+% =========================
+% DA RICORDARE
+% =========================
+
+\newtcolorbox{trap}[1]{
+    colback=red!15,
+    colframe=red!60!black,
+    coltitle=red!35!black,
+    colbacktitle=red!25,
+    fonttitle=\bfseries,
+    title={DA RICORDARE\quad\textemdash\quad #1},
+    boxrule=0.6pt,
+    arc=2pt,
+    left=7pt,
+    right=7pt,
+    top=4pt,
+    bottom=4pt,
+    breakable
+}
+
+% =========================
+% ESEMPIO
+% =========================
+
+\newtcolorbox{ex}[1]{
+    colback=orange!15,
+    colframe=orange!70!black,
+    coltitle=orange!40!black,
+    colbacktitle=orange!30,
+    fonttitle=\bfseries,
+    title={ESEMPIO\quad\textemdash\quad #1},
+    boxrule=0.6pt,
+    arc=2pt,
+    left=7pt,
+    right=7pt,
+    top=4pt,
+    bottom=4pt,
+    breakable
+}
 
 \begin{document}
-Circa 50 anni fa, durante un famoso seminario al Dartmouth College, venne ufficialmente introdotto il termine “Intelligenza Artificiale”. Vi era allora un’atmosfera di euforia tecnologica indotta dall’avvento del computer, una macchina in grado di manipolare simboli, e l’intelligenza artificiale sembrava a portata di mano. Che cosa è successo dopo? L’articolo presenta alcuni momenti particolarmente significativi della storia dell’IA, le principali aree di ricerca e le prospettive applicative.
+
+\section{L'Umanesimo e la civiltà rinascimentale}
 
 
-\begin{defn}{Intelligenza Artificiale}
-L’Intelligenza Artificiale (IA) è un campo di ricerca che mira a creare macchine in grado di eseguire compiti che richiedono intelligenza umana, come apprendere, ragionare, risolvere problemi e comprendere il linguaggio naturale.
+\section{Quando collocare l'Umanesimo e il Rinascimento?}
+
+
+L'Umanesimo è un movimento intellettuale manifestatosi principalmente in Italia nel Quattrocento, caratterizzato dall'interesse per l'antichità e dalla riscoperta dei classici. È la cultura che sfocerà nella civiltà rinascimentale.
+
+
+\begin{defn}{Umanesimo vs Rinascimento}
+'Umanesimo' sottolinea in modo particolare gli aspetti ideologici e culturali. 'Rinascimento' si riferisce alle manifestazioni artistiche, ai fenomeni di costume, alla civiltà nel suo complesso.
 \end{defn}
 
 
-Ogni disciplina scientifica è animata da sogni e motivata da grandi progetti. Grazie ad essi si procede, conseguendo risultati forse differenti rispetto a quelli immaginati, ma spesso utili e in grado di conferire all’intero programma un significato che sovente va al di là delle speranze e degli obiettivi originali. Accade anche di conseguire, talora, risultati inaspettati e originariamente imprevedibili.
+La situazione politica dell'epoca vede il tramonto delle istituzioni universali dell'Impero e del Papato. In Europa si consolidano monarchie centralizzate (Francia, Spagna, Inghilterra), mentre in Italia persistono gli stati regionali con frammentazione politica (Milano, Venezia, Firenze, Stato della Chiesa, Regno di Napoli). L'Italia, facile preda di conquista, cadrà in gran parte sotto il dominio spagnolo ed inizierà un lungo periodo di decadenza.
 
 
-Qual è il sogno dei ricercatori di intelligenza artificiale? Nella maggior parte dei casi si sogna, cosa piuttosto ambiziosa in verità, di realizzare quello che di certo appare come il più inaccessibile tra i progetti scientifici: capire i principi e i meccanismi del funzionamento della mente umana allo scopo di riprodurre l’intelligenza umana su una macchina.
+\begin{defn}{Pace di Lodi (1454)}
+La situazione geopolitica italiana viene definita con la pace di Lodi del 1454. L'istituzione repubblicana resiste nell'area toscana e nelle antiche città marinare di Genova e Venezia; la maggior parte dei Comuni si è evoluta in Signorie e principati; il centro è sottoposto al controllo della Chiesa; il sud e le isole sono governati dalla dinastia aragonese, succeduta a quella angioina nel Regno di Napoli.
+\end{defn}
+
+
+La situazione economica è caratterizzata da una civiltà urbana che fiorisce prima in Italia centrale e settentrionale e poi in Europa, con un'economia aperta in contrapposizione a quella chiusa del Medioevo. Lo sviluppo economico mercantile e monetario è opera di un ceto borghese attivo ed industrioso, dando vita a una nuova aristocrazia urbana commerciale e finanziaria, non più militare e cavalleresca come nel Medioevo.
+
+
+\begin{defn}{Concezione della vita nell'Umanesimo}
+Si diffonde un ottimismo, un atteggiamento attivo e operoso, una ricerca della felicità sulla terra e una rottura con la mentalità medievale. Si afferma la dignità e centralità dell'uomo, sviluppando un universo culturale che rispecchia le esigenze di una nuova società: il mondo classico diventa modello di valori, di forme e di stile.
+\end{defn}
+
+
+\begin{defn}{Antropocentrismo}
+Dal greco άνθρωπος (anthropos, 'uomo') e κέντρον (kentron, 'centro'), è quel pensiero che tende a porre la specie umana al centro dell'Universo e, ad un livello più pratico, a considerarla superiore rispetto alle altre entità presenti sulla Terra quali gli animali e la loro natura, la natura in sé e la Terra stessa.
+\end{defn}
+
+
+\begin{ex}{Esempio}
+Il celebre disegno leonardesco chiamato 'Uomo vitruviano', in omaggio a Vitruvio, autore del De Architectura, dimostra come il corpo umano possa essere armoniosamente inscritto nelle due figure perfette del cerchio e del quadrato.
+\end{ex}
+
+
+\section{L'Umanesimo}
+
+
+L'Umanesimo è un movimento culturale del XV secolo che pone al centro dell'attenzione l'uomo, la sua dignità e le sue potenzialità.
+
+
+\begin{defn}{Antropocentrismo}
+L'antropocentrismo è la visione secondo cui l'uomo è al centro dell'universo e misura di tutte le cose.
+\end{defn}
+
+
+Vetruvio, architetto romano, descrive nel suo trattato di architettura il rapporto proporzionale tra le misure del corpo umano e le figure geometriche perfette.
+
+
+\begin{ex}{Esempio}
+Leonardo Da Vinci realizza nel 1490 l'opera 'Uomo vitruviano', in cui un corpo umano sdraiato sul dorso con arti allargati si inscrive perfettamente sia in un cerchio che in un quadrato, dimostrando come le misure dell'uomo siano dalla natura distribuite secondo un ordine geometrico.
+\end{ex}
+
+
+Il concetto di antropocentrismo si collega direttamente alla visione rinascimentale del mondo, dove l'uomo è considerato il centro della creazione divina.
+
+
+\begin{defn}{Libertà e dignità dell'uomo}
+La dignità dell'uomo risiede nella sua capacità di autodeterminarsi, libero di scegliere il proprio destino tra le cose inferiori (bruti) e quelle superiori (divine).
+\end{defn}
+
+
+\begin{ex}{Esempio}
+Giovanni Pico della Mirandola, nell'Oratio de hominis dignitate, afferma che Dio non ha fatto l'uomo né celeste né terreno, né mortale né immortale, ma lo ha lasciato libero di plasmarsi da sé. L'uomo può degenerare nelle cose inferiori o rigenerarsi nelle cose superiori a seconda di come coltiva i semi e i germi che Dio gli ha dato.
+\end{ex}
+
+
+La libertà di autodeterminazione è il fondamento della dignità umana secondo la filosofia umanistica.
+
+
+\begin{defn}{Filologia}
+La filologia è lo studio critico dei testi antichi, in particolare quelli del mondo classico greco e latino, al fine di recuperarne il significato originario.
+\end{defn}
+
+
+Gli umanisti si dedicano allo studio dei classici con spirito critico, analizzando i testi alla ricerca di modelli di armonia, virtù e responsabilità civiche.
+
+
+Il rapporto con gli antichi non implica un rinnegamento della fede cristiana, ma una valorizzazione dello sviluppo di tutte le facoltà intellettuali e capacità materiali dell'uomo.
+
+
+\begin{defn}{Umanista}
+L'umanista è colui che si dedica allo studio dei classici e alla diffusione della cultura umanistica, ponendo al centro della propria attività la dignità dell'essere umano.
+\end{defn}
+
+
+I nuovi signori del Rinascimento intendono la cultura e l'arte come mezzi di prestigio politico e intellettuale, ospitando artisti e letterati a corte.
+
+
+\begin{ex}{Esempio}
+Leonardo Da Vinci realizza la 'Dama con l'ermellino' (1485-90) su commissione di Ludovico il Moro, mentre Piero della Francesca dipinge la 'Pala Montefeltro' (1466-72 ca.) per il signore di Urbino.
+\end{ex}
+
+
+Il rinnovamento delle città si accompagna alla costruzione di nuovi palazzi che testimoniano il prestigio dei loro proprietari.
+
+
+\section{Corti rinascimentali e mecenatismo}
+
+
+I signori chiamano presso le corti letterati e artisti, li sostengono e li proteggono e commissionano loro la realizzazione di opere d'arte, secondo le nuove tecniche compositive (prospettiva).
+
+
+\begin{defn}{Mecenatismo}
+Sostegno fornito dai Signori ad artisti, intellettuali e scienziati di corte.
+\end{defn}
+
+
+Perché? - amore per l'arte, la scienza, la cultura - magnificenza, lustro - interessi politici - rivalità tra corti
+
+
+\begin{ex}{Esempio}
+Famosi mecenati: Lorenzo il Magnifico, Papa Sisto IV, Papa Giulio II, Leonardo, Michelangelo.
+\end{ex}
+
+
+\section{Geografia dell'Umanesimo}
+
+
+Firenze: brigata laurenziana, Accademia platonica. Roma: Biblioteca Vaticana, rinascita monumentale. Ferrara: letteratura cavalleresca. Napoli: rinascita artistica e poetica sostenuta dagli Aragonesi. Urbino: città in forma di palazzo. Venezia: Stampa, pittura, Biblioteca Marciana.
+
+
+\section{Napoli – Regno degli Aragonesi}
+
+
+Letteratura in latino: Panormita (Antonio Beccadelli a cui si deve la fondazione dell'Accademia Antoniana) e Giovanni Pontano; letteratura in volgare con Jacopo Sannazzaro.
+
+
+\begin{defn}{Arcadia}
+Jacopo Sannazzaro introduce la novità del romanzo pastorale scrivendo l'Arcadia, opera destinata a larga e lunga fortuna in tutta Europa.
+\end{defn}
+
+
+\section{Ferrara – marchesi, poi duchi d'Este}
+
+
+Scuola di Guarino Veronese; università centro di studi filosofici, scientifici, astrologici (fu frequentata anche da Nicolò Copernico).
+
+
+\begin{ex}{Esempio}
+Matteo Maria Boiardo (1441-1494): scrive gli Amorum libri tres, quindi l'Orlando innamorato quando va a risiedere a Ferrara presso Ercole d'Este. In pieno Rinascimento il poema cavalleresco troverà la sua massima espressione a Ferrara con Ludovico Ariosto (1474-1533) che continuerà la materia di Boiardo scrivendo l'Orlando Furioso.
+\end{ex}
+
+
+\section{Firenze comunale e medicea}
+
+
+Firenze comunale - Cancelleria della repubblica: Coluccio Salutati, Poggio Bracciolini, Leonardo Bruni.
+
+
+\begin{defn}{Lorenzo il Magnifico}
+Sale al potere nel 1469 - muore nel 1492. Accademia platonica: Marsilio Ficino, Pico della Mirandola.
+\end{defn}
+
+
+\begin{ex}{Esempio}
+Nencia di Barberino, Commento ad alcuni sonetti d'amore, Canzona di Bacco (1490).
+\end{ex}
+
+
+\begin{defn}{Angelo Poliziano}
+(1454-1494): scrive la Fabula di Orfeo (1480) nel periodo in cui era a Mantova presso i Gonzaga; Stanze per la giostra.
+\end{defn}
+
+
+\begin{defn}{Luigi Pulci}
+(1432-1484): Morgante.
+\end{defn}
+
+
+\section{Il ruolo della stampa}
+
+
+Diffusione di nuove idee. Rapporto individuale con la cultura.
+
+
+\begin{defn}{Conseguenze culturali}
+Nascita di un mercato editoriale; il libro non è più solo veicolo di conoscenza ma è anche un bene economico dotato di valore.
+\end{defn}
+
+
+\begin{defn}{Conseguenze economiche}
+Nascita di un pubblico di lettori.
+\end{defn}
+
+
+\begin{defn}{Conseguenze sociali}
+Diffusione di idee diverse e alternative rispetto a quelle dettate dal potere; rafforzamento della censura.
+\end{defn}
+
+
+\section{L'Umanesimo}
+
+
+Gli umanisti giudicavano il Medioevo come un'età oscura, dominata dalla barbarie e dall'ignoranza, e consideravano gli autori classici greci e latini come modelli cui ispirarsi per far rinascere le arti. Per questo chiamarono la loro epoca Rinascimento. Fu un periodo ricco di importanti conquiste in tutti i settori del pensiero umano: arte, letteratura, scienza, tecnica, politica. Durò all'incirca fino alla metà del Cinquecento, quando il Concilio di Trento (1545) apre l'età della Controriforma e la pace di Cateau-Cambrésis (1559) dà avvio al dominio spagnolo in Italia.
+
+
+\section{L'Umanesimo}
+
+
+L'Italia fu il centro della nuova cultura. Principi e papi divennero i maggiori mecenati, finanziando opere d'arte e sostenendo studiosi e letterati per dare prestigio alla propria corte. Dall'Italia la cultura rinascimentale si diffuse rapidamente in tutta Europa.
+
+
+Dal 1492, con la morte di Lorenzo il Magnifico, Roma divenne la capitale del Rinascimento trionfante. Firenze e la Toscana furono la culla del Rinascimento.
+
+
+\section{L'Umanesimo nelle arti}
+
+
+Ricerca di verosimiglianza, eleganza e armonia.
+
+
+\section{Scultura}
+
+
+\begin{defn}{Caratteristiche della scultura rinascimentale}
+Interesse per l'uomo e per le forme del corpo; naturalezza dei movimenti e intensità espressiva dei volti.
+\end{defn}
+
+
+\begin{ex}{Esempio}
+Michelangelo: «David» a Firenze, «Pietà» nella Basilica di S. Pietro a Roma.
+\end{ex}
+
+
+\begin{defn}{La Vergine delle rocce}
+Opera rinascimentale attribuita a Leonardo da Vinci.
+\end{defn}
+
+
+\begin{ex}{Esempio}
+Michelangelo (1508-1580): «Storie della Genesi» e «Giudizio Universale» nella Cappella Sistina.
+\end{ex}
+
+
+\begin{ex}{Esempio}
+Raffaello Sanzio (1483-1520): affreschi nelle Stanze Vaticane.
+\end{ex}
+
+
+\section{Pittura}
+
+
+\begin{defn}{Caratteristiche della pittura rinascimentale}
+Volume alla figura umana, rappresentata nelle sue dimensioni reali.
+\end{defn}
+
+
+\begin{ex}{Esempio}
+Leonardo da Vinci (1452-1519): «La Gioconda».
+\end{ex}
+
+
+\section{Architettura}
+
+
+\begin{defn}{Filippo Brunelleschi}
+Dà inizio all'architettura rinascimentale completando la costruzione dell'immensa cupola di S. Maria del Fiore a Firenze, sospesa dalla fine del Duecento per l'impossibilità di risolvere problemi di ordine tecnico.
+\end{defn}
+
+
+\begin{defn}{Michelangelo Buonarroti}
+Cupola di S. Pietro a Roma.
+\end{defn}
+
+
+\begin{defn}{Andrea Palladio}
+Ville per le grandi famiglie venete.
+\end{defn}
+
+
+\section{Rinascita delle arti e dell'Umanesimo}
+
+
+\begin{ex}{Esempio}
+Michelangelo, «David» - L'Umanesimo nella scultura.
+\end{ex}
+
+
+\begin{ex}{Esempio}
+Michelangelo, «Pietà» - L'Umanesimo.
+\end{ex}
+
+
+\begin{ex}{Esempio}
+Raffaello, Madonna del Cardellino - L'Umanesimo nella pittura.
+\end{ex}
+
+
+\begin{ex}{Esempio}
+Mantegna, Cristo morto - L'Umanesimo.
+\end{ex}
+
+
+\begin{ex}{Esempio}
+Botticelli, La Primavera - L'Umanesimo: imitazione della natura, culto della bellezza, mitologia classica.
+\end{ex}
+
+
+\begin{ex}{Esempio}
+Michelangelo e la Cappella Sistina - L'Umanesimo.
+\end{ex}
+
+
+\begin{ex}{Esempio}
+Raffaello, La scuola di Atene - L'Umanesimo.
+\end{ex}
+
+
+\section{Recupero del mondo classico}
+
+
+\begin{defn}{Architettura classica}
+Colonne, armonia e simmetria.
+\end{defn}
+
+
+\begin{ex}{Esempio}
+Cupole meravigliose - Michelangelo, Cupola di San Pietro.
+\end{ex}
+
+
+\begin{ex}{Esempio}
+Precisi calcoli geometrici - Brunelleschi, Duomo di Firenze.
+\end{ex}
+
+
+\section{Città ideali}
+
+
+\begin{ex}{Esempio}
+Palmanova, Ferrara.
+\end{ex}
+
+
+\section{Nuovo impulso a scienza e tecnica}
+
+
+\begin{ex}{Esempio}
+Cannoni e archibugi.
+\end{ex}
+
+
+\section{Osservazione della natura e ricerca sperimentale}
+
+
+\begin{ex}{Esempio}
+Orologio meccanico del '300.
+\end{ex}
+
+
+\section{Sviluppo delle scienze (pag. 364/367)}
+
+
+\section{Da Tolomeo a Copernico}
+
+
+\begin{defn}{Sistema tolemaico}
+Geocentrico.
+\end{defn}
+
+
+\begin{defn}{Sistema copernicano}
+Eliocentrico.
+\end{defn}
+
+
+La prima critica alla dottrina tolemaica venne da Copernico (Nicolaj Copernik) che dubitava della sua esattezza perché la giudicava troppo complessa e "antieconomica".
+
+
+\section{Leonardo da Vinci}
+
+
+Teorico e matematico, Leonardo aveva studiato in Polonia, poi a Bologna, Padova e Ferrara. Si rivolse ai libri degli antichi per cercare soluzioni alternative al geocentrismo tolemaico.
+
+
+\begin{defn}{Umanesimo (in relazione a Leonardo)}
+L'Umanesimo rappresentò per Leonardo un approccio critico verso le autorità accademiche e scolastiche, spingendolo a ricercare una conoscenza basata sull'esperienza diretta.
+\end{defn}
 
 
 \begin{trap}{Errori da evitare}
-L’espressione “Intelligenza Artificiale” ha innescato paure irrazionali, alimentate da certa letteratura e cinematografia fantascientifica. Inoltre, il sarcasmo proveniente da alcuni ambienti antiscientifici non ha giovato. Forse il campo avrebbe incontrato meno ostilità se per esso fosse stata scelta la denominazione britannica – derivata da A. Turing – di “Intelligenza delle Macchine” (IM), in quanto essa rammenta costantemente che, per quanto intelligenti, pur sempre di macchine si tratta.
+È facile credere che Leonardo fosse un illetterato perché non conosceva bene il latino e il greco. Tuttavia, la sua definizione di «omo sanza lettere» è una battuta polemica: sebbene ignorasse la cultura classica, sosteneva di possedere un vocabolario volgare sufficiente a esprimere qualsiasi concetto.
 \end{trap}
 
 
-La scelta di un’espressione tanto forte come “Intelligenza Artificiale” ha di certo generato aspettative eccessive, in particolare considerando le limitazioni della tecnologia con la quale gli artefatti intelligenti andavano via via realizzati. D’altra parte, qualcuno ha giustamente osservato che ogni volta che l’IA raggiunge un nuovo traguardo questo non è più annoverato tra i suoi risultati ma si trasforma in un prodotto dell’informatica tradizionale.
+\begin{defn}{Omo sanza lettere}
+Leonardo accettò la definizione di «omo sanza lettere» data da alcuni cortigiani, ribattendo che le sue opere sono più degne di essere studiate perché derivano dall'esperienza e non dalla sola parola altrui.
+\end{defn}
 
 
 \begin{ex}{Esempio}
-Un esempio abbastanza noto è costituito dai sintetizzatori vocali con cui si interagisce telefonicamente quando si chiama un call center, per esempio, se si deve segnalare i valori del contatore alla società fornitrice di elettricità. Oggi si considerano tali sintetizzatori come un utile prodotto dell’informatica. In passato, tuttavia, quello dei sintetizzatori vocali e, più in generale, della elaborazione del segnale vocale, era un problema di interazione uomo-macchina a ragione collocato nella ricerca in IA.
+Caio Mario rispose ai patrizi romani accusandolo di non essere un oratore: «Quelli che dall'altrui fatiche se medesimi fanno ornati, le mie a me medesimo non vogliono concedere».
 \end{ex}
 
 
-Il programma di fondo dell’IA, quello di costruire macchine in grado di comportarsi come gli esseri umani, non è mai stato abbandonato e il test di Turing, basato sull’idea secondo cui se il comportamento di una macchina è indistinguibile da quello di un essere umano allora quella macchina può essere considerata intelligente, viene oggi quotidianamente superato in molte circostanze, almeno in determinati e ben precisi ambiti cognitivi.
+\section{Niccolò Machiavelli}
+
+
+\begin{defn}{Il Principe}
+Fondamentale fu l'opera Il Principe del fiorentino Niccolò Machiavelli (1469-1527). L'autore vi descrive il concreto funzionamento della politica applicando alla sua analisi lo stesso metodo dell'osservazione diretta utilizzato dagli altri studiosi nello studio della natura.
+\end{defn}
+
+
+\begin{defn}{Politica (secondo Machiavelli)}
+La politica, cioè l'arte di governare, ha come unico obiettivo la conservazione dello Stato. Il Principe deve governare senza essere condizionato da norme morali o religiose.
+\end{defn}
+
+
+\section{La rivoluzione della stampa a caratteri mobili}
+
+
+\begin{defn}{Stesura dell'inchiostro e stampa}
+La tecnica consisteva nella stesura dell'inchiostro sui caratteri e nella stampa della pagina appoggiando un foglio bianco sottoposto a una pressatura meccanica.
+\end{defn}
+
+
+\begin{defn}{Composizione di una pagina}
+Si allineavano cubetti di metallo su ciascuno dei quali era modellata a rilievo e alla rovescia una lettera dell'alfabeto.
+\end{defn}
+
+
+\begin{defn}{Gutenberg}
+1455: Johann Gutenberg, orafo tedesco di Magonza, stampò il primo libro per intero, la Bibbia.
+\end{defn}
+
+
+\section{Gutenberg e la stampa}
+
+
+La sua invenzione si affermò con rapidità ed ebbe un ruolo decisivo nel favorire la diffusione dell'Umanesimo.
+
+
+\section{IL PROCEDIMENTO}
+
+
+Con la stampa a caratteri mobili divenne possibile riprodurre tutte le copie volute della stessa pagina.
+
+
+I tempi e i costi per la realizzazione dei libri si ridussero notevolmente rispetto alla copiatura a mano.
+
+
+\section{L'ambiente di lavoro}
+
+
+L'ambiente di lavoro dello stampatore era ben diverso dal silenzioso studiolo degli amanuensi.
+
+
+\begin{defn}{Torchio a vite}
+Strumento meccanico che sostituì la mano e la penna dei copisti.
+\end{defn}
 
 
 \begin{ex}{Esempio}
-A semplificare (o complicare?) le cose oggi interviene Internet. Le informazioni, grazie a Internet, si trasferiscono da un capo all’altro del pianeta in tempo reale: quando si interagisce con uno sconosciuto giocando a scacchi in rete, non si è in grado di stabilire se l’interlocutore sia un programma software o un essere umano. Così il test di Turing, nel particolare ambito cognitivo costituito dal gioco degli scacchi, appare perfettamente superato.
+La bottega del veneziano Aldo Manuzio fu un centro di ritrovo culturale frequentato dai più illustri intellettuali d'Europa.
 \end{ex}
 
 
-\begin{ex}{Esempio}
-In effetti, rete o no, per quanto riguarda il gioco degli scacchi ci sono programmi che riescono oggi a battere i campioni del mondo. Nel 1997, Deep Blue, un sistema sviluppato dalla IBM, riuscì a sconfiggere l’allora campione del mondo di scacchi, G. Kasparov, in un torneo regolare di sei incontri. Si trattò di un successo clamoroso dell’IA.
-\end{ex}
+\section{L'Umanesimo}
 
 
-\begin{trap}{Errori da evitare}
-Nella situazione specifica, la supremazia dei calcolatori riguarda una data capacità cognitiva: gli scacchi. Ma è chiaro che un computer esperto in quel gioco incontrerebbe difficoltà insormontabili se si pretendesse che si cimentasse in un compito per noi assai semplice come quello di friggere un uovo. O se si tentasse di sostenere con lui un’amabile conversazione.
-\end{trap}
+Medioevo e Rinascimento
 
 
-\begin{ex}{Esempio}
-Per limitarsi alle conversazioni con i computer condotte in linguaggio naturale, le difficoltà sono effettivamente notevoli. Si può ricordare in proposito un famoso programma degli anni Sessanta, ELIZA (scritto nel 1965 da J. Weizenbaum), che simulava una seduta dallo psicanalista. Ecco un tipico dialogo tra il programma e una ragazza:
-\end{ex}
+\begin{defn}{Visione medievale}
+L'uomo è considerato solo uno degli elementi della creazione, allo stesso livello delle altre realtà naturali. Viene affermata la centralità dell'uomo, al quale Dio stesso ha concesso la libertà e il talento per essere signore del mondo. Si esalta la vita contemplativa interamente dedicata alla preghiera. L'ideale è il monaco che ha abbandonato il mondo. Si esalta il valore della vita attiva e l'autonomia delle cose terrene. L'uomo può raggiungere la salvezza eterna anche impegnandosi nel mondo.
+\end{defn}
 
 
-\begin{ex}{Esempio}
-UTENTE: Gli uomini sono tutti uguali. ELIZA: In che senso? UTENTE: Ci rompono sempre le scatole per una cosa o per l’altra. ELIZA: Ti viene in mente un esempio specifico? UTENTE: Il mio ragazzo mi ha fatto venire qui. ELIZA: Il tuo ragazzo ti ha fatto venire qui? UTENTE: Dice che sono sempre depressa. ELIZA: Mi spiace che tu sia depressa. E così via, senza fine.
-\end{ex}
+\begin{defn}{Visione medievale}
+La conoscenza è interamente contenuta nella Bibbia. La cultura è subordinata alla religione e controllata dalla Chiesa. Gli ecclesiastici sono praticamente i soli a saper leggere e scrivere.
+\end{defn}
 
 
-La strategia utilizzata da ELIZA per rispondere all’utente è talmente ingenua da non richiedere ulteriori commenti: anche se, va precisato a onor del vero, molti di noi sono inclini a sospettare che talora gli psicanalisti veri si comportino allo stesso modo. A parte gli scherzi, abbiamo certo sorriso con condiscendenza a fronte di dialoghi come questo tra un computer e un utente umano. Ma dalla metà degli anni Sessanta ad oggi molto lavoro è stato fatto e si sono conseguiti risultati assai più interessanti di questo.
+\begin{defn}{Visione rinascimentale}
+La conoscenza è frutto dell'osservazione diretta della natura. La cultura si svincola dall'autorità della Chiesa. La sua diffusione passa per le università, le accademie e le corti. L'intellettuale cessa di essere un ecclesiastico.
+\end{defn}
 
-
-ELIZA riveste, ormai, un interesse puramente storico, perché oggi l’elaborazione del linguaggio naturale scritto e parlato è diventata un’area matura e con molteplici applicazioni.
 
 \end{document}
-
-
