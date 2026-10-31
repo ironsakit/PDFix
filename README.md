@@ -4,6 +4,10 @@
 
 Trasforma appunti disordinati e imprecisi in PDF di studio ben organizzati, usando il modello Ollama [qwen3:8b](https://ollama.com/library/qwen3:8b) come "cervello" e il codice Python come le "mani" che eseguono il lavoro: l'LLM decide *cosa* dire, il codice controlla *come* viene impaginato.
 
+<p align="center">
+  <img src="assets/visual.png" alt="PDF generato da PDFix" width="500">
+</p>
+
 Il server lavora in modo **asincrono** e **streamma l'avanzamento** in tempo reale: l'utente vede la generazione procedere invece di aspettare al buio, e il server resta reattivo mentre lavora.
 
 ## Come funziona
