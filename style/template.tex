@@ -1,120 +1,36 @@
-\documentclass[12pt]{article}
-
-\usepackage[a4paper, margin=1.5cm]{geometry}
+\documentclass[11pt]{article}
+\usepackage[a4paper, margin=1.8cm]{geometry}
 \usepackage{parskip}
 
 \usepackage{fontspec}
+\setmainfont{Segoe UI}          % font sans-serif di sistema (Windows). Alternativa: Arial
 \usepackage{unicode-math}
-\setmathfont{Latin Modern Math}
+\setmathfont{Latin Modern Math} % per i greci/formule
 
 \usepackage{xcolor}
 \usepackage[most]{tcolorbox}
 \usepackage{titlesec}
-\usepackage{fancyhdr}
 
-% =========================
-% TITOLI
-% =========================
+\definecolor{cDef}{RGB}{99,91,255}
+\definecolor{cEx}{RGB}{16,185,129}
+\definecolor{cTrap}{RGB}{244,63,94}
 
-\definecolor{main}{RGB}{35,105,65}
+\titleformat{\section}{\Large\bfseries\color{cDef}}{}{0pt}{}
+\titlespacing{\section}{0pt}{14pt}{8pt}
 
-\titleformat{name=\section,numberless}
-    {\Large\bfseries\color{main}}
-    {}
-    {0pt}
-    {}
-    [\vspace{4pt}{\color{main!35}\titlerule[0.8pt]}]
+\tcbset{callout/.style={
+  enhanced, breakable, boxrule=0pt, arc=6pt,
+  colback=#1!6, colbacktitle=#1!16,
+  coltitle=#1, fonttitle=\bfseries\small,
+  left=10pt, right=10pt, top=6pt, bottom=6pt,
+  borderline west={3pt}{0pt}{#1},
+  drop fuzzy shadow=black!18
+}}
 
-\titlespacing{name=\section,numberless}
-    {0pt}
-    {22pt}
-    {10pt}
-
-% =========================
-% PAGINA
-% =========================
-
-\pagestyle{fancy}
-\fancyhf{}
-
-\fancyfoot[C]{%
-    \small\textcolor{green!50!black}{\thepage}%
-}
-
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
-\fancypagestyle{plain}{
-    \fancyhf{}
-    \fancyfoot[C]{%
-        \small\textcolor{green!50!black}{\thepage}%
-    }
-    \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{0pt}
-}
-
-% =========================
-% DEFINIZIONE
-% =========================
-
-\newtcolorbox{defn}[1]{
-    colback=green!15,
-    colframe=green!55!black,
-    coltitle=green!25!black,
-    colbacktitle=green!30,
-    fonttitle=\bfseries,
-    title={DEFINIZIONE\quad\textemdash\quad #1},
-    boxrule=0.6pt,
-    arc=2pt,
-    left=7pt,
-    right=7pt,
-    top=4pt,
-    bottom=4pt,
-    breakable
-}
-
-% =========================
-% DA RICORDARE
-% =========================
-
-\newtcolorbox{trap}[1]{
-    colback=red!15,
-    colframe=red!60!black,
-    coltitle=red!35!black,
-    colbacktitle=red!25,
-    fonttitle=\bfseries,
-    title={DA RICORDARE\quad\textemdash\quad #1},
-    boxrule=0.6pt,
-    arc=2pt,
-    left=7pt,
-    right=7pt,
-    top=4pt,
-    bottom=4pt,
-    breakable
-}
-
-% =========================
-% ESEMPIO
-% =========================
-
-\newtcolorbox{ex}[1]{
-    colback=orange!15,
-    colframe=orange!70!black,
-    coltitle=orange!40!black,
-    colbacktitle=orange!30,
-    fonttitle=\bfseries,
-    title={ESEMPIO\quad\textemdash\quad #1},
-    boxrule=0.6pt,
-    arc=2pt,
-    left=7pt,
-    right=7pt,
-    top=4pt,
-    bottom=4pt,
-    breakable
-}
+\newtcolorbox{defn}[1]{callout=cDef,  title={DEFINIZIONE \textbullet\ #1}}
+\newtcolorbox{ex}[1]{callout=cEx,    title={ESEMPIO \textbullet\ #1}}
+\newtcolorbox{trap}[1]{callout=cTrap, title={DA RICORDARE \textbullet\ #1}}
 
 \begin{document}
-
 %%CONTENUTO%%
-
 \end{document}

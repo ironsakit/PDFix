@@ -38,8 +38,16 @@ async def ask_qwen(appunto):  # async dichiara che questa funzione deve essere "
     }
     # AsyncClient --> versione await di requests
     async with httpx.AsyncClient(timeout=300) as client:  # timeout=300 --> aspetta massimo 300 secondi per una risposta da parte di Qwen
-        risposta = await client.post("http://localhost:11434/api/generate", json=payload)  # json=payload significa che invia il nostro dizionario al server nel formato che comprende
-    return risposta.json()["response"]
+        try:
+            risposta = await client.post("http://localhost:11434/api/generate", json=payload)  # json=payload significa che invia il nostro dizionario al server nel formato che comprende
+            try:
+                risposta = risposta.json()["response"].strip()
+                return risposta
+            except json.JSONDecodeError:
+                logger.warning("Ollama ha fornito un dato nel formato sbagliato")
+        except httpx.HTTPError:
+            logger.error("Impossibile connettersi ad Ollama")
+        return None
 
 def parsa_risposta(testo):
     try:

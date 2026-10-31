@@ -1,1 +1,592 @@
--- Aggiungi qui i tuoi appunti --
+Atzeni, Ceri, Paraboschi, Torlone
+Basi di dati
+McGraw-Hill
+Capitolo 1: 
+Introduzione
+Base di dati
+• Insieme organizzato di dati utilizzati 
+per il supporto allo svolgimento di 
+attività (di un ente, azienda, ufficio, 
+persona)
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+2
+Contenuti
+• modelli per l'organizzazione dei dati 
+• linguaggi per l'utilizzo dei dati
+• sistemi per la gestione dei dati
+• metodologie di progettazione di basi 
+di dati
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+3
+Sistema informativo 
+• Componente (sottosistema) di una 
+organizzazione che gestisce 
+(acquisisce, elabora, conserva, 
+produce) le informazioni di interesse 
+(cioè utilizzate per il perseguimento 
+degli scopi dell’organizzazione )
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+4
+Sistemi informativi e automazione
+• Il concetto di “sistema informativo”  
+è indipendente da qualsiasi 
+automatizzazione: –esistono organizzazioni la cui 
+ragion d’essere è la gestione di 
+informazioni (p. es. servizi 
+anagrafici e banche) e che operano 
+da secoli
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+5
+Sistema Informatico
+• porzione automatizzata del sistema
+informativo:
+la parte del sistema informativo che 
+gestisce informazioni con 
+tecnologia informatica
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+6
+Gestione delle informazioni 
+• Raccolta, acquisizione
+• Archiviazione, conservazione
+• Elaborazione, trasformazione, 
+produzione
+• Distribuzione, comunicazione, 
+scambio
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+7
+Gestione delle informazioni 
+• Nelle attività umane, le informazioni 
+vengono gestite in forme diverse: – idee informali – linguaggio naturale (scritto o parlato, 
+formale o colloquiale, in varie lingue) – disegni, grafici, schemi– numeri e codici
+• esuvari supporti– mente umana, carta, dispositivi 
+elettronici
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+8
+Gestione delle informazioni
+• Nelle attività standardizzate dei sistemi 
+informativi complessi, sono state 
+introdotte col tempo forme di 
+organizzazione e codifica delle 
+informazioni
+• Ad esempio, nei servizi anagrafici si è 
+iniziato con registrazioni discorsive e poi– nomeecognome– estremi anagrafici– codice fiscale
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+9
+Informazioni e dati 
+• Nei sistemi informatici (e non solo), 
+le informazioni vengono 
+rappresentate in modo essenziale, 
+spartano: attraverso i dati
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+10
+Informazioni e dati 
+(definizioni dal Vocabolario della lingua italiana 1987)
+informazione: notizia, dato o elemento che 
+consente di avere conoscenza più o meno 
+esatta di fatti, situazioni, modi di essere. 
+dato: ciò che è immediatamente presente 
+alla conoscenza, prima di ogni 
+elaborazione; (in informatica) elementi di 
+informazione costituiti da simboli che 
+debbono essere elaborati
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+11
+Dati e informazioni
+• Un esempio:
+Mario 275
+su un foglio di carta sono due dati e non 
+significano molto
+• Se il foglio di carta viene fornito in 
+risposta alla domanda “A chi mi devo 
+rivolgere per il problema X; qual è il suo 
+numero di telefono?”, allora i dati 
+possono essere interpretati per fornire 
+informazione e arricchire la conoscenza
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+12
+Perché i dati? 
+• La rappresentazione precisa di forme 
+più ricche di informazione e 
+conoscenza è difficile 
+• I dati costituiscono spesso una 
+risorsa strategica, perché più stabili 
+nel tempo di altre componenti 
+(processi, tecnologie, ruoli umani):–ad esempio, i dati delle banche o 
+delle anagrafi 
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+13
+Base di dati 
+(accezione generica, metodologica)
+• Insieme organizzato di dati utilizzati 
+per il supporto allo svolgimento delle 
+attività di un ente (azienda, ufficio, 
+persona)
+(accezione specifica, metodologica e 
+tecnologica) 
+• insieme di dati gestito da un DBMS 
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+14
+Sistema di gestione di basi di dati
+DataBase Management System (DBMS)
+• Sistema
+che gestisce collezioni di dati: – grandi– persistenti– condivise
+garantendo – privatezza– affidabilità– efficienza– efficacia
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+15
+DBMS
+• Prodotti software (complessi) 
+disponibili sul mercato; esempi:–Access–DB2–Oracle–Informix–Sybase–SQLServer
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+16
+Le basi di dati sono ... grandi
+• dimensioni (molto) maggiori della 
+memoria centrale dei sistemi di 
+calcolo utilizzati
+• il limite deve essere solo quello 
+fisico dei dispositivi 
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+17
+Le basi di dati sono ... persistenti
+• hanno un tempo di vita indipendente 
+dalle singole esecuzioni dei 
+programmi che le utilizzano 
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+18
+Le basi di dati sono ... condivise
+• Ogni organizzazione (specie se 
+grande) è divisa in settori o 
+comunque svolge diverse attività 
+• Ciascun settore/attività ha un 
+(sotto)sistema informativo (non 
+necessariamente disgiunto) 
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+19
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+20
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+21
+Problemi
+• Ridondanza: –informazioni ripetute
+• Rischio di incoerenza: –le versioni possono non coincidere
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+22
+Archivi e basi di dati 
+Gestione 
+orario lezioni
+Gestione 
+ricevimento
+Archivio 1:
+orario lezioni
+Archivio 2:
+ricevimento
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+23
+Archivi e basi di dati 
+Gestione 
+orario lezioni
+Gestione 
+ricevimento
+Base di dati
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+24
+Le basi di dati sono condivise
+• Una base di dati e' una risorsa 
+integrata, condivisa fra applicazioni 
+• conseguenze–Attivita' diverse su dati condivisi: 
+• meccanismi di autorizzazione–Accessi di più utenti ai dati 
+condivisi:
+• controllo della concorrenza
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+25
+I DBMS garantiscono ... privatezza
+• Si possono definire meccanismi di 
+autorizzazione–l'utente A è autorizzato a leggere 
+tutti i dati e a modificare quelli sul 
+ricevimento –l'utente B è autorizzato a leggere i 
+X e a modificare Y
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+26
+I DBMS garantiscono... affidabilità  
+• Affidabilità (per le basi di dati):–resistenza a malfunzionamenti 
+hardware e software
+• Una base di dati è una risorsa 
+pregiata e quindi deve essere 
+conservata a lungo termine
+• Tecnica fondamentale: –gestione delle transazioni
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+27
+Transazione  
+• Insieme di operazioni da considerare 
+indivisibile ("atomico
+"), corretto 
+anche in presenza di concorrenza 
+con effetti definitivi 
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+e 
+28
+Le transazioni sono … atomiche 
+• La sequenza di operazioni sulla base 
+di dati viene eseguita per intero o per 
+niente:–trasferimento di fondi da un conto 
+A ad un conto B: o si fanno il 
+prelevamento da A e il versamento 
+su B o nessuno dei due
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+29
+Le transazioni sono … concorrenti 
+• L'effetto di transazioni concorrenti 
+deve essere coerente (ad esempio 
+"equivalente" all'esecuzione 
+separata)–se due assegni emessi sullo 
+stesso conto corrente vengono 
+incassati contemporaneamente si 
+deve evitare di trascurarne uno
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+30
+I risultati delle transazioni sono 
+permanenti
+• La conclusione positiva di una 
+transazione corrisponde ad un 
+impegno (in inglese commit) a 
+mantenere traccia del risultato in 
+modo definitivo, anche in presenza di 
+guasti e di esecuzione concorrente
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+31
+I DBMS debbono essere...efficienti
+• Cercano di utilizzando al meglio le 
+risorse di spazio di memoria 
+(principale e secondaria) e tempo (di 
+esecuzione e di risposta)
+• I DBMS, con tante funzioni, rischiano 
+l'inefficienza e per questo ci sono 
+grandi investimenti e competizione
+• L’efficienza è anche il risultato della 
+qualità delle applicazioni
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+32
+I DBMS debbono essere...efficaci
+• Cercano di rendere produttive le 
+attività dei loro utilizzatori, offrendo 
+funzionalità articolate, potenti e 
+flessibili:–il corso è in buona parte dedicato 
+ad illustrare come i DBMS 
+perseguono l'efficacia
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+33
+DBMS vs file system 
+• La gestione di insiemi di dati grandi e 
+persistenti è possibile anche attraverso 
+sistemi più semplici — gli ordinari file 
+system dei sistemi operativi
+• I file system prevedono forme rudimentali 
+di condivisione: "tutto o niente" 
+• I DBMS estendono le funzionalità dei file 
+system, fornendo più servizi ed in maniera 
+integrata
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+34
+DBMS vs file system (2)
+• Nei programmi tradizionali che accedono 
+a file, ogni programma contiene una 
+descrizione della struttura del file stesso, 
+con i conseguenti rischi di incoerenza fra 
+le descrizioni (ripetute in ciascun 
+programma) e i file stessi
+• Nei DBMS, esiste una porzione della base 
+di dati (il catalogo o dizionario) che 
+contiene una descrizione centralizzata dei 
+dati, che può essere utilizzata dai vari 
+programmi
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+35
+Descrizioni dei dati nei DBMS
+• Rappresentazioni dei dati a livelli diversi– permettono l’indipendenza dei dati dalla 
+rappresentazione fisica: 
+• i programmi fanno riferimento alla 
+struttura a livello più alto, e le 
+rappresentazioni sottostanti possono 
+essere modificate senza necessità di 
+modifica dei programmi– Precisiamo attraverso il concetto di 
+• modello dei dati
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+36
+Modello dei dati
+• Insieme di costrutti utilizzati per 
+organizzare i dati di interesse e 
+descriverne la dinamica 
+• Componente fondamentale: meccanismi 
+di strutturazione (o costruttori di tipo) 
+• Come nei linguaggi di programmazione 
+esistono meccanismi che permettono di 
+definire nuovi tipi, così ogni modello dei 
+dati prevede alcuni costruttori 
+• Esempio: il modello relazionale prevede il 
+costruttore relazione, che permette di 
+definire insiemi di record omogenei 
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+37
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+38
+Organizzazione dei dati in una 
+base di dati
+Orario
+Insegnamento
+Docente
+Aula
+Ora
+Analisi matem. I
+Luigi Neri
+N1 8:
+Basi di dati
+Piero Rossi
+00
+N2 9:
+45
+Chimica
+Nicola Mori
+Fisica I
+N1 9:
+45
+Mario Bruni
+N1 11
+:45
+Fisica II
+Mario Bruni
+Sistemi inform.
+N3 9:
+45
+Piero Rossi
+N3 8:
+00
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+39
+Basi di dati: schema e istanza
+Lo schema della base di dati
+Orario
+Insegnamento
+Docente
+Aula
+Ora
+Analisi matem. I
+Luigi Neri
+N1 8:
+Basi di dati
+Piero Rossi
+00
+N2 9:
+45
+Chimica
+Nicola Mori
+Fisica I
+N1 9:
+45
+Mario Bruni
+N1 11
+:45
+Fisica II
+Mario Bruni
+Sistemi inform.
+N3 9:
+45
+Piero Rossi
+N3 8:
+00
+L'istanza della base di dati
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+40
+Schema e istanza
+• In ogni base di dati esistono:– lo schema, sostanzialmente invariante 
+nel tempo, che ne descrive la struttura 
+(aspetto intensionale)
+• es.: le intestazioni delle tabelle – l’istanza, i valori attuali, che possono 
+cambiare anche molto rapidamente 
+(aspetto estensionale)
+• es.: il “corpo” di ciascuna tabella 
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+Ex
+41
+Due tipi (principali) di modelli
+• modelli logici
+• modelli concettuali
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+42
+Modelli logici
+• Adottati nei DBMS esistenti per 
+l’organizzazione dei dati–utilizzati dai programmi–indipendenti dalle strutture fisiche
+• esempi: relazionale, reticolare, 
+gerarchico, a oggetti 
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+43
+Modelli concettuali
+• Permettono di rappresentare i dati in 
+modo indipendente da ogni sistema–cercano di descrivere i concetti del 
+mondo reale–sono utilizzati nelle fasi preliminari 
+di progettazione
+• Il più diffuso è il modello Entity
+Relationship
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+44
+Architettura (semplificata) di un 
+DBMS
+utente
+Schema logico
+Schema interno
+BD
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+45
+Architettura semplificata di un 
+DBMS: schemi
+• schema logico: descrizione della 
+base di dati nel modello logico (ad 
+esempio, la struttura della tabella)
+• schema interno (o fisico): 
+rappresentazione dello schema 
+logico per mezzo di strutture 
+memorizzazione (file; ad esempio, 
+record con puntatori, ordinati in un 
+certo modo)
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+46
+Indipendenza dei dati 
+• Il livello logico è indipendente da 
+quello fisico:–una tabella è utilizzata nello stesso 
+modo qualunque sia la sua 
+realizzazione fisica (che può anche 
+cambiare nel tempo)
+• Perciò in questo corso vedremo solo 
+il livello logico e non quello fisico
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+47
+Architettura standard 
+(ANSI/SPARC)
+a tre livelli per DBMS
+utente
+utente
+Schema
+esterno
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+utente
+utente
+Schema
+esterno
+Schema logico
+Schema interno
+BD
+Schema
+esterno
+utente
+48
+Architettura ANSI/SPARC: schemi
+schema logico: descrizione dell’intera base 
+di dati nel modello logico “principale” del 
+DBMS 
+Schema interno (o fisico): rappresentazione 
+dello schema logico per mezzo di strutture 
+fisiche di memorizzazione 
+schema esterno: descrizione di parte della 
+base di dati in un modello logico (“viste” 
+parziali, derivate, anche in modelli diversi) 
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+49
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+50
+Una vista
+Corso Aula Docente
+Rossi Basi di dati DS3
+Bruni Reti N3
+Neri Sistemi N3
+Bruni Controlli G
+Corsi
+Nome Piano Edificio
+OMI DS1 Terra
+Pincherle G Primo
+OMI N3 Terra
+Aule
+CorsiSedi Corso Aula
+Reti N3
+Sistemi N3
+Controlli G
+Piano Edificio
+OMI Terra
+Pincherle Primo
+OMI Terra
+Indipendenza dei dati 
+• conseguenza della articolazione in 
+livelli
+• l’accesso avviene solo tramite il 
+livello esterno (che può coincidere 
+con il livello logico)
+• due forme: –indipendenza fisica–indipendenza logica
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+51
+Indipendenza fisica
+• il livello logico e quello esterno sono 
+indipendenti da quello fisico –una relazione è utilizzata nello 
+stesso modo qualunque sia la sua 
+realizzazione fisica –la realizzazione fisica può 
+cambiare senza che debbano 
+essere modificati i programmi 
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1
+52
+Indipendenza logica 
+• il livello esterno è indipendente da 
+quello logico 
+• aggiunte o modifiche alle viste non 
+richiedono modifiche al livello logico
+• modifiche allo schema logico che 
+lascino inalterato lo schema esterno 
+sono trasparenti 
+Atzeni-Ceri-Paraboschi-Torlone, 
+Basi di dati, Capitolo 1

@@ -17,14 +17,18 @@ Funzione di ogni tipo:
 - "CODICE" --> una porzione di codice (per le materie che lo richiedono).
 
 COSE IMPORTANTI DA RICORDARE:
-- I blocchi vanno inseriti nella lista in ordine logico, seguendo il filo degli argomenti.
-- IMPORTANTE: ogni volta che il testo introduce un nuovo argomento principale, DEVI inserire PRIMA un blocco "TITOLO_SEZIONE" con il nome dell'argomento, e SOLO DOPO i paragrafi e gli altri blocchi che lo riguardano. Un documento ben strutturato inizia sempre con un TITOLO_SEZIONE.
-- TRAP, ESEMPIO e CODICE sono OPZIONALI: se non hai dati sufficienti per generarli in modo pertinente, ometterli.
+- Scrivi PARAGRAFI SOSTANZIOSI: ogni blocco PARAGRAFO deve contenere più frasi collegate (indicativamente 4-6), fondendo le idee correlate in un discorso fluido e continuo. NON creare blocchi di una o due righe: se più concetti sono collegati, vanno nello STESSO paragrafo.
+- Condensa: raggruppa gli argomenti affini sotto un unico TITOLO_SEZIONE generale, invece di spezzare tutto in tante micro-sezioni.
+- Posiziona ogni TRAP ed ESEMPIO SUBITO DOPO il PARAGRAFO o la DEFINIZIONE a cui si riferiscono, MAI raggruppati alla fine. L'esempio segue immediatamente ciò che illustra.
+- Varia: alterna i tipi di blocco seguendo il contenuto, non produrre lunghe sequenze dello stesso tipo.
+- Ogni nuovo argomento principale inizia con un TITOLO_SEZIONE, poi i suoi paragrafi e blocchi. Il documento inizia con un TITOLO_SEZIONE e NON finisce con uno.
+- TRAP, ESEMPIO e CODICE sono opzionali ma consigliati dove aiutano la comprensione.
 
-Esempio del formato atteso:
+Esempio del formato e del RITMO atteso:
 [
   {"tipo": "TITOLO_SEZIONE", "paragrafo": "Le grandezze fisiche"},
-  {"tipo": "PARAGRAFO", "paragrafo": "Una grandezza fisica è una proprietà misurabile di un corpo o fenomeno."},
-  {"tipo": "DEFINIZIONE", "titolo": "Massa", "paragrafo": "La massa è la quantità di materia di un corpo, misurata in kg."},
-  {"tipo": "ESEMPIO", "paragrafo": "Un litro d'acqua ha una massa di circa 1 kg."}
+  {"tipo": "PARAGRAFO", "paragrafo": "Una grandezza fisica è una proprietà misurabile di un corpo o di un fenomeno. Si distingue tra grandezze fondamentali, come lunghezza, massa e tempo, e grandezze derivate, che si ottengono combinando le fondamentali. Ogni grandezza è associata a un'unità di misura standard, definita dal Sistema Internazionale, che permette di confrontare le misure in modo univoco."},
+  {"tipo": "DEFINIZIONE", "titolo": "Massa", "paragrafo": "La massa è la quantità di materia di un corpo, misurata in chilogrammi (kg); è una proprietà intrinseca e non dipende dal luogo in cui il corpo si trova."},
+  {"tipo": "ESEMPIO", "paragrafo": "Un litro d'acqua distillata ha una massa di circa 1 kg a 4 °C."},
+  {"tipo": "TRAP", "paragrafo": "Non confondere massa e peso: il peso dipende dalla gravità, la massa no."}
 ]

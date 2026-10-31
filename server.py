@@ -40,6 +40,7 @@ async def genera(richesta: Richiesta):
         risultati[i] = await ask_qwen(chunk)
 
     async def flusso():
+        yield f"progress {0}/{totale}\n"
         completati = 0
         for finito in asyncio.as_completed([lavora(i, chunk) for i, chunk in enumerate(chunks)]):
             await finito
