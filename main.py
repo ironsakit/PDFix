@@ -1,11 +1,15 @@
 import subprocess
-import requests
+import logging
+import httpx
+import os
 import json
 from pydantic import BaseModel, ValidationError
+from typing import Literal
 
+logger = logging.getLogger(__name__)    # oggetto Logger che mi permette di scrivere messaggi (__name__ = main.py in questo caso)
 
 class Blocco(BaseModel):
-    tipo: str
+    tipo: Literal["TITOLO_SEZIONE", "PARAGRAFO", "DEFINIZIONE", "TRAP", "ESEMPIO", "CODICE"]
     paragrafo: str
     titolo: str | None = None
 
@@ -17,48 +21,14 @@ def valida_blocchi(blocchi):
             Blocco(**blocco)   # valida il blocco
             validi.append(blocco)
         except (ValidationError, TypeError): # se esplode la validazione o non è un dizionario
-            print("blocco scartato: ", blocco)
+            logger.warning(f"Blocco {blocco} invalido")
             continue
     return validi
 
-# r --> (raw string) dice che in questa stringa le lettere come backslash sono lettere normali senza doverle raddoppiare
-# \usepackage[tcolorbox] --> libreria scatole colorate
-# \tcbuselibrary{skins, breakable} --> bei bordi e box che vanno a capo a fine pagina
-# \newtcolor{defn}[1] --> nuovo tipo di box latex --> colblack=green!5 (colore sfondo verde chiaro a 5%), colframe=green!50!black (colore bordo verde scuro), fonttile=\bfseries (titolo in grassetto)
-# \newtcolor{trap}[1] --> nuovo tipo di box latex --> colblack=orange!5 (colore sfondo arancione chiaro a 5%), colframe=orange!80!black (colore bordo arancione scuro), fonttile=\bfseries (titolo in grassetto)
+with open("prompt/prompt.txt", "r", encoding="utf-8") as f:
+    SYSTEM_PROMPT = f.read()
 
-SYSTEM_PROMPT = """"Rispondi con il JSON e basta. Nessun testo prima, nessun testo dopo, niente ```json, nessuna spiegazione. Il primo carattere della tua risposta deve essere [ e l'ultimo ].
-
-Il tuo unico compito è ordinare e migliorare gli appunti che vengono inseriti come input, seguendo un formato preciso.
-
-- Devi creare un JSON contenente una lista di blocchi (dizionari), dove inserisci gli appunti migliorati e ordinati.
-- Il formato di ciascun dizionario è: {tipo, [titolo], paragrafo}.
-- I tipi concessi sono: "TITOLO_SEZIONE", "PARAGRAFO", "DEFINIZIONE", "TRAP", "ESEMPIO", "CODICE".
-- Ogni tipo ha una chiave "paragrafo" con il testo di quel tipo.
-- Solo il tipo "DEFINIZIONE" ha anche la chiave "titolo".
-
-Funzione di ogni tipo:
-- "TITOLO_SEZIONE" --> introduce un nuovo argomento principale; nel paragrafo va SOLO il nome della sezione, senza contenuto.
-- "PARAGRAFO" --> un paragrafo di testo e il suo contenuto.
-- "DEFINIZIONE" --> una definizione, con titolo e contenuto.
-- "TRAP" --> una trappola d'esame in cui è facile cadere.
-- "ESEMPIO" --> un esempio dell'argomento appena trattato.
-- "CODICE" --> una porzione di codice (per le materie che lo richiedono).
-
-COSE IMPORTANTI DA RICORDARE:
-- I blocchi vanno inseriti nella lista in ordine logico, seguendo il filo degli argomenti.
-- IMPORTANTE: ogni volta che il testo introduce un nuovo argomento principale, DEVI inserire PRIMA un blocco "TITOLO_SEZIONE" con il nome dell'argomento, e SOLO DOPO i paragrafi e gli altri blocchi che lo riguardano. Un documento ben strutturato inizia sempre con un TITOLO_SEZIONE.
-- TRAP, ESEMPIO e CODICE sono OPZIONALI: se non hai dati sufficienti per generarli in modo pertinente, ometterli.
-
-Esempio del formato atteso:
-[
-  {"tipo": "TITOLO_SEZIONE", "paragrafo": "Le grandezze fisiche"},
-  {"tipo": "PARAGRAFO", "paragrafo": "Una grandezza fisica è una proprietà misurabile di un corpo o fenomeno."},
-  {"tipo": "DEFINIZIONE", "titolo": "Massa", "paragrafo": "La massa è la quantità di materia di un corpo, misurata in kg."},
-  {"tipo": "ESEMPIO", "paragrafo": "Un litro d'acqua ha una massa di circa 1 kg."}
-]"""
-
-def ask_qwen(appunto):
+async def ask_qwen(appunto):  # async dichiara che questa funzione deve essere "messa in pausa" mentre aspetta
     payload = {
         "model" : "qwen3:8b",
         "system" : SYSTEM_PROMPT,
@@ -66,21 +36,22 @@ def ask_qwen(appunto):
         "stream": False,    # aspettiamo che ci dia la risposta completa, al posto di darcela pezzettino per pezzettino
         "think": False
     }
-    risposta = requests.post("http://localhost:11434/api/generate", json=payload)  # json=payload significa che invia il nostro dizionario al server nel formato che comprende
-    dati = risposta.json()
-    return dati["response"]
+    # AsyncClient --> versione await di requests
+    async with httpx.AsyncClient(timeout=300) as client:  # timeout=300 --> aspetta massimo 300 secondi per una risposta da parte di Qwen
+        risposta = await client.post("http://localhost:11434/api/generate", json=payload)  # json=payload significa che invia il nostro dizionario al server nel formato che comprende
+    return risposta.json()["response"]
 
 def parsa_risposta(testo):
     try:
         return json.loads(testo)
     except json.JSONDecodeError:
-        print("JSON invalido")
-        print(testo)
+        logger.error("JSON non valido nel modello:\n%s", testo)
         return []
 
 def compila_pdf(tex):
+    output_dir = os.path.dirname(tex) or "."  # da "output/Appunti.tex" -> "output"
     subprocess.run(
-        ["xelatex", "-interaction=nonstopmode", tex],  # se incontra un errore nella compilazione procede dritto senza che devo schiacciare qualcosa
+        ["xelatex", "-interaction=nonstopmode", "-output-directory", output_dir, tex],  # se incontra un errore nella compilazione procede dritto senza che devo schiacciare qualcosa
         check=True  # fa sollevare un errore Python se la compilazione fallisce così ce ne accorgiamo
     )
 
@@ -94,7 +65,7 @@ def escape(text):
     return text
 
 def costruisci_documento(corpo):
-    with open("template.tex", "r", encoding="utf-8") as f:
+    with open("style/template.tex", "r", encoding="utf-8") as f:
         template = f.read()
 
     documento = template.replace("%%CONTENUTO%%", corpo)
@@ -164,13 +135,17 @@ def costruisci_blocco(blocchi):
 def create_chunks(testo, tot = 4000):
     chunks = []
     inizio = 0
-    while inizio < len(testo):
-        fine_ideale = inizio + tot
-        posizione = testo.rfind(".", inizio, fine_ideale)
-        fine = fine_ideale if posizione == -1 else posizione + 1
-        chunk = testo[inizio:fine]
-        if len(chunk) == 0:
-            return chunks
-        chunks.append(chunk)
-        inizio = fine
-    return chunks
+
+    while True:
+        fine = inizio + tot
+        # rfind restituisce "-1" se non trova la stringa in input
+        posizione = testo.rfind(" ", inizio, fine)   # Trova nel testo nel chunk nella parte che va da inizio a fine_ideale la prima occorrenza del " " partendo dal fondo (la fine non è incluso)
+
+        if posizione != -1:                 # se ho trovato la posizione giusta
+            fine = posizione + 1            # metto che la fine del chunk deve essere proprio dopo la posizione trovata (ovvero dopo il ' ')
+
+        chunk = testo[inizio:fine]          # prendo il chunk giusto
+        if len(chunk) == 0:                 # se il chunk è zero (ovvero non c'è più nulla all'interno di 'testo')
+            return chunks                   # restituisco i chunks creati
+        chunks.append(chunk.strip())        # sennò continuo a inserire i chunk all'interno della lista 'chunks'
+        inizio = fine                       # la fine del chunk precedente diventa l'inizio del chunk successivo
