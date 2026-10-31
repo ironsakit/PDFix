@@ -1,0 +1,14 @@
+name: Test
+
+on: push          # esegui a ogni push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest        
+    steps:
+      - uses: actions/checkout@v4             # 1. scarica il codice
+      - uses: actions/setup-python@v5         # 2. installa Python
+        with:
+          python-version: "3.13"
+      - run: pip install pytest httpx fastapi pydantic   # 3. installa le dipendenze
+      - run: python -m pytest                            # 4. lancia i test
