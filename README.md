@@ -43,7 +43,7 @@ Il server lavora in modo **asincrono** e **streamma l'avanzamento** in tempo rea
 | `ESEMPIO` | box esempio |
 | `CODICE` | blocco a caratteri fissi |
 
-3. **`costruisci_blocco()`** — scorre la lista, estrae il `tipo` e sceglie il template corrispondente, accumulando i pezzi uniti con `"\n\n".join()`.
+3. **`costruisci_blocco()`** — scorre la lista, estrae il `tipo` e sceglie il template corrispondente, accumulando i pezzi.
 4. **Blocchi non validi / tipo sconosciuto** — nonostante il prompt a Qwen sia molto specifico, il modello può restituire blocchi malformati o tipi senza senso. `valida_blocchi` controlla ogni blocco con `pydantic` e scarta (loggando) quelli non validi; `costruisci_blocco` ignora i tipi che non riconosce. In ogni caso non finiscono nel PDF.
 5. **Escaping dei caratteri speciali** — ogni testo passa per una funzione di escaping prima di entrare nel LaTeX: caratteri come `%`, `_`, `&` hanno un significato speciale e, ad esempio, un `%` grezzo commenterebbe il resto della riga facendo sparire del testo senza alcun errore.
 6. **Preambolo LaTeX separato** — risiede in `style/template.tex`, con un placeholder `%%CONTENUTO%%` che il codice sostituisce (`.replace()`) con i blocchi generati. Separarlo rende il PDF più facile da personalizzare.
