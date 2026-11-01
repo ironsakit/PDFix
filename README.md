@@ -59,7 +59,7 @@ Il server lavora in modo **asincrono** e **streamma l'avanzamento** in tempo rea
 - Dipendenze Python: `fastapi`, `uvicorn`, `pydantic`, `httpx`, `pytest`
 
 ```bash
-pip install fastapi uvicorn pydantic httpx pytest
+pip install -r requirements.txt
 ```
 
 ## Come si usa
